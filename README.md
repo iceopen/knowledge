@@ -4,6 +4,7 @@
 
 ## 目录说明
 
+- [OKR](okr)
 - [开发](coding)
 - [运营](operate)
 - [职业](profession)

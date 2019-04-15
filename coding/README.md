@@ -34,3 +34,4 @@
 - Mvc 框架选择上：Beego / Gin
 - ORM ：Beego / Gorm
 - [Golang 文件名命名规则](golang.md)
+- [Go语言高级编程(Advanced Go Programming)](https://books.studygolang.com/advanced-go-programming-book/)
