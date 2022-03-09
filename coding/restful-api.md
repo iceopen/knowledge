@@ -54,83 +54,55 @@ DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
 
 - 2.层级：尽可能不超过三级
     正确：2级案例
-        ```
-            {
-                "link": {
-                    "rel": "collection https://www.example.com/zoos", 
-                    "href": "https://api.example.com/zoos", 
-                    "title": "List of zoos", 
-                    "type": "application/vnd.yourformat+json"
-                }
-            }
-        ```
-
-错误：4级案例
-
-```
-           {
-"resNum": 0,
-"resMsg": "success",
-"resData": {
-    "m:MsgResponse": {
-        "Head": {
-            "ReplyID": "20170516131840",
-            "ReplyModule": "gateway",
-            "ErrDesc": "Success",
-            "ErrCode": "00000000",
-            "ReplyCommand": "QueryInvoice"
-        },
-        "@xmlns:m": "http://tempuri.org/TESTiam",
-        "Body": {
-            "Reseller": "0",
-            "Count": "1",
-            "PaymentMode": "现金",
-            "InvoiceList": {
-                "Invoice": {
-                    "Status": "0",// 0:表示账单未支付，1:表示账单已支付
-                    "BillType": "01",
-                    "TotalAdj": "0",
-                    "NewCharge": "20000",
-                    "BalanceDue": "20000",//账单编号
-                    "TotalPaid": "0",
-                    "LateFeeAmount": "0",
-                    "InvoiceNo": "185205752464",//账单编号
-                    "FromDate": "2017-04-01",
-                    "ToDate": "2017-04-30",
-                    "BillDate": "2017-05-01"//账单日期
-                }
-            },
-            "Result": "成功"
-        	}
-    	}
-    }
+```json
+{
+	"link": {
+		"rel": "collection https://www.example.com/zoos",
+		"href": "https://api.example.com/zoos",
+		"title": "List of zoos",
+		"type": "application/vnd.yourformat+json"
+	}
 }
 ```
 
-- 3.返回规定：正常返回直接返回结构体，错误返回提供错误状态码和错误说明
-    正确：
-        ```
-             {
-                "link": {
-                    "rel": "collection https://www.example.com/zoos", 
-                    "href": "https://api.example.com/zoos", 
-                    "title": "List of zoos", 
-                    "type": "application/vnd.yourformat+json"
-                }
-            }
-        ```
-   错误：
-     ```
-             {
-                "err_code": 200,
-                "link": {
-                    "rel": "collection https://www.example.com/zoos", 
-                    "href": "https://api.example.com/zoos", 
-                    "title": "List of zoos", 
-                    "type": "application/vnd.yourformat+json"
-                }
-            }
-        ```
+错误：4级案例
 
-- 4.GET 列表时候：必须提供当前页数、总页面、每页行数
-
+```json
+{
+	"resNum": 0,
+	"resMsg": "success",
+	"resData": {
+		"m:MsgResponse": {
+			"Head": {
+				"ReplyID": "20170516131840",
+				"ReplyModule": "gateway",
+				"ErrDesc": "Success",
+				"ErrCode": "00000000",
+				"ReplyCommand": "QueryInvoice"
+			},
+			"@xmlns:m": "http://tempuri.org/TESTiam",
+			"Body": {
+				"Reseller": "0",
+				"Count": "1",
+				"PaymentMode": "现金",
+				"InvoiceList": {
+					"Invoice": {
+						"Status": "0", // 0:表示账单未支付，1:表示账单已支付
+						"BillType": "01",
+						"TotalAdj": "0",
+						"NewCharge": "20000",
+						"BalanceDue": "20000", //账单编号
+						"TotalPaid": "0",
+						"LateFeeAmount": "0",
+						"InvoiceNo": "185205752464", //账单编号
+						"FromDate": "2017-04-01",
+						"ToDate": "2017-04-30",
+						"BillDate": "2017-05-01" //账单日期
+					}
+				},
+				"Result": "成功"
+			}
+		}
+	}
+}
+```
